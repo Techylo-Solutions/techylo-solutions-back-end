@@ -19,4 +19,4 @@ SELECT * FROM Careers;
 UPDATE Careers SET Job_type = 'Full-time' WHERE Job_title = 'Associate Technical Writer'
 
 --To delete a career
-DELETE FROM Careers WHERE Job_title = 'Software Engineer'
+DELETE FROM Careers WHERE Job_title = 'Technical Writer'

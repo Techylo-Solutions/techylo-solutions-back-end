@@ -1,7 +1,7 @@
-import dotenv from 'dotenv'
 import mysql from 'mysql2'
+import dotenv from 'dotenv'
 
-dotenv.config({ path: '../.env' })
+dotenv.config()
 
 const pool = mysql.createPool({
     host: process.env.MYSQL_HOST,
@@ -14,8 +14,5 @@ export async function getCareers(){
     const [careerResult] = await pool.query(
         "SELECT * FROM Careers"    
     )
-    return careerResult
-}
-
-const careers = await getCareers()
-console.log(careers)
+    return careerResult;
+} 
