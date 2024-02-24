@@ -1,7 +1,6 @@
-// src/app.js
 import express from 'express'
 import cors from 'cors'
-import { getCareers } from './database.js' // Updated import path
+import { getCareers } from './src/database.js'
 
 const app = express()
 app.use(cors())
@@ -19,7 +18,6 @@ app.get('/careers', async (req, res) => {
         res.status(500).json({error: 'Internal server error'})
     }
 });
-
 
 /*app.use((err, req, res, next) => {
     console.error(err.stack)
