@@ -16,4 +16,8 @@ export async function getCareers(){
         "SELECT * FROM Careers"    
     )
     return careerResult;
-} 
+}
+
+async function createApplication(){
+    
+}

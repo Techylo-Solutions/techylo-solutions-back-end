@@ -17,7 +17,18 @@ app.get('/careers', async (req, res) => {
         console.error(error)
         res.status(500).json({error: 'Internal server error'})
     }
-});
+})
+
+app.post('/sendApplication', async (req, res) => {
+    try{
+
+    }
+
+    catch(error){
+        console.error(error)
+    }
+
+})
 
 /*app.use((err, req, res, next) => {
     console.error(err.stack)
