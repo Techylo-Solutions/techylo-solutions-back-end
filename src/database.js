@@ -18,6 +18,20 @@ export async function getCareers(){
     return careerResult;
 }
 
-async function createApplication(){
+
+export async function createApplication(fname, lname, email, cvFileName, career){
+    try{
+        await pool.query(
+            `
+            INSERT INTO applicants (first_name, last_name, email, cv_file_name, job_id)
+            VALUES (?,?,?,?,?);
+            `,
+            [fname, lname, email, cvFileName, career] 
+        )
+    }
+
+    catch(error){
+        throw error;
+    }
     
 }
