@@ -5,8 +5,14 @@ import { createApplication, getCareers } from './src/database.js'
 
 const app = express()
 const upload = multer({
-    destination: function(req, file, cb){
-        return cb(null, "/uploads")
+    dest:'uploads/',
+    fileFilter: (req, file, cb) => {
+        if(file.mimetype === 'application/pdf'){
+            cb(null, true);
+        }
+        else{
+            cb(new Error('PDF'))
+        }
     }
 })
 app.use(cors())
@@ -30,16 +36,13 @@ app.post('/sendApplication', upload.single('file'), async (req, res) => {
       const { fname, lname, email, career } = req.body;
       const cvFileName = req.file.originalname;
       
-      /*
-      res.json({ message: 'Application submitted successfully' });
-      console.log('Form Data: ', { career, fname, lname, email, cv});
-      console.log('CV: ', cv);
-      */
-
       await createApplication(fname, lname, email, cvFileName, career)
+
+      res.status(200).json({ message: 'Application submitted successfully' });
     } 
     catch (error) {
       console.error(error);
+      res.status(500).json({ error: 'Failed to submit the application try again.' });
     }
 });
 
