@@ -16,7 +16,7 @@ const upload = multer({
     }
 })
 app.use(cors())
-const port = 8080
+const port = 8084
 
 app.get('/careers', async (req, res) => {
     try{
