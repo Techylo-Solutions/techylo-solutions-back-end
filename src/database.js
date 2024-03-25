@@ -34,3 +34,18 @@ export async function createApplication(fname, lname, email, cvFileName, career)
     }
     
 }
+
+export async function createMessage(fname, lname, email, message){
+    try{
+        await pool.query(
+            `
+            INSERT INTO contactinfo (first_name, last_name, email, message)
+            VALUES (?,?,?,?);
+            `,
+            [fname, lname, email, message] 
+        )
+    }
+    catch(error){
+        throw error;
+    }
+}
